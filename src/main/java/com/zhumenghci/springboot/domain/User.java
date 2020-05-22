@@ -17,6 +17,10 @@ public class User {
         this.pwd = pwd;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
