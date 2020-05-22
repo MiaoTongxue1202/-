@@ -24,6 +24,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+
     @PostMapping("login")
     public JsonData login(@RequestBody User user){
 
@@ -31,6 +33,16 @@ public class UserController {
 
         String token = userService.login(user.getUsername(),user.getPwd());
 
-        return token !=null ? JsonData.buildSuccess(token): JsonData.buildError("账号密码错误");
+        return token !=null ? JsonData.buildSuccess(token): JsonData.buildError("账号密码错误！");
     }
+
+    /**
+     * 列出全部用户
+     * @return
+     */
+    @PostMapping("list_user")
+    public JsonData listUser(){
+        return JsonData.buildSuccess(userService.USER_LIST());
+    }
+
 }

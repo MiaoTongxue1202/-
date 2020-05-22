@@ -3,7 +3,9 @@ package com.zhumenghci.springboot.mapper;
 import com.zhumenghci.springboot.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -29,6 +31,12 @@ public class UserMapper {
         }
 
         return null;
+    }
+
+    public List<User> userList(){
+        List<User> list = new ArrayList<>();
+        list.addAll(usermap.values());
+        return list;
     }
 
 

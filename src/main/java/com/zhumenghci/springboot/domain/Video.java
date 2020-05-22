@@ -1,5 +1,9 @@
 package com.zhumenghci.springboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,14 +13,19 @@ public class Video {
 
     private String title;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String summary;
 
     private int price;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String coverImg;
 
+    @JsonProperty("创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "zh",timezone = "GMT+8")
     private Date createTime;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Chapter> chapterlist;
 
     public Video(){

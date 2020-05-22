@@ -1,5 +1,7 @@
 package com.zhumenghci.springboot.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhumenghci.springboot.domain.Video;
 import com.zhumenghci.springboot.service.VidoService;
 import com.zhumenghci.springboot.utils.JsonData;
@@ -15,14 +17,30 @@ public class VideoController {
     @Autowired
     private VidoService vidoService;
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("list")
-    public JsonData list(){
+    public JsonData list() throws JsonProcessingException {
 
         List<Video> list = vidoService.listVideo();
 
-        return JsonData.buildSuccess(list);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String jsStr = objectMapper.writeValueAsString(list);
+        System.out.println(jsStr);
+
+        List<Video> temp = objectMapper.readValue(jsStr,List.class);
+
+        return JsonData.buildSuccess(temp);
     }
 
+    /**
+     *
+     * @param video
+     * @return
+     */
     @PostMapping("save_video_chapter")
     public JsonData saveVideoChapter(@RequestBody Video video){
 
