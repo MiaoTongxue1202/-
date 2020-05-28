@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 @RunWith(SpringRunner.class)  //底层用junit  SpringJUnit4ClassRunner
@@ -62,7 +63,7 @@ public class VideoTest {
         int status = mvcResult.getResponse().getStatus();
         System.out.println(status);
 
-        String result = mvcResult.getResponse().getContentAsString();
+        String result = mvcResult.getResponse().getContentAsString(Charset.forName("utf-8"));
         System.out.println(result);
 
     }

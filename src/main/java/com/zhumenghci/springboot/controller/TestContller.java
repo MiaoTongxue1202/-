@@ -24,6 +24,14 @@ public class TestContller implements Serializable {
     @Value("${wxpay.sercret}")
     private String paySecret;
 
+    @GetMapping("list")
+    public JsonData testExt(){
+
+        int i =  1/0;
+
+        return JsonData.buildSuccess("");
+    }
+
     @Autowired
     private WXConfig wxConfig;
 

@@ -24,7 +24,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
+    /**
+     *
+     * @param user
+     * @return
+     */
     @PostMapping("login")
     public JsonData login(@RequestBody User user){
 
